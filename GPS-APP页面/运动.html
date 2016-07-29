@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<title>添加弧线</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=QXwuA2Zi8h3huVQvqVrW2MhU"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
+	<style type="text/css">
+		html,body{
+			width:100%;
+			height:100%;
+			margin:0;
+			overflow:hidden;
+			font-family:"微软雅黑";
+		}
+	</style>
+</head>
+<body>
+	<div style="width:100%;height:100%;border:1px solid gray" id="container"></div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("container");
+	
+	//map.centerAndZoom(new BMap.Point(坐标值), 20(控制放大倍数的参数));
+	map.centerAndZoom(new BMap.Point(115.791283, 28.661757), 20);
+	map.enableScrollWheelZoom();
+	var beijingPosition=new BMap.Point(115.791283,28.661757),
+		hangzhouPosition=new BMap.Point(115.791383,28.661857),
+		taiwanPosition=new BMap.Point(115.791483,28.661957);
+		taiwanPosition1=new BMap.Point(115.791583,28.661057);
+	var points = [beijingPosition,hangzhouPosition, taiwanPosition,taiwanPosition1];
+
+	var curve = new BMapLib.CurveLine(points, {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5}); //创建弧线对象
+	map.addOverlay(curve); //添加到地图中
+	curve.enableEditing(); //开启编辑功能
+</script>
